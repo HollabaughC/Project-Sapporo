@@ -1,0 +1,10 @@
+{
+  "raven": {
+    "name": "Raven",
+    "affinity": 0
+  },
+  "system": {
+    "name": "",
+    "affinity": 0
+  }
+}

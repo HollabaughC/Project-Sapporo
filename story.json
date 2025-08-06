@@ -1,0 +1,383 @@
+{
+  "start": {
+    "lines": [
+      {"character": "system", "text": "Welcome to Sapporo. You have been sent on a mission, one you will learn in due time."}
+    ],
+    "choices": [
+      {
+        "text": "Understood.",
+        "next": "start1"
+      },
+      {
+        "text": "Understood.",
+        "next": "start1"
+      },
+      {
+        "text": "Understood.",
+        "next": "start1"
+      }
+    ]
+  },
+
+  "start1": {
+    "lines": [
+      {"character": "system", "text": "Before we begin, what is your main skillset?"}
+    ],
+    "choices": [
+      {
+        "text": "I can hack anything.",
+        "next": "start2",
+        "skillChange": {"hacking": 2}
+      },
+      {
+        "text": "I have a silver tongue.",
+        "next": "start2",
+        "skillChange": {"persuasion": 2}
+      },
+      {
+        "text": "I don't need anything but my fists.",
+        "next": "start2",
+        "skillChange": {"combat": 2}
+      }
+    ]
+  },
+
+  "start2": {
+    "lines": [
+      {"character": "system", "text": "Right, you are a mercenary. You find yourself in a car. By your surroundings, you must be in the center of the city."}
+    ],
+    "choices": [
+      {
+        "text": "Look up.",
+        "next": "start3"
+      },
+      {
+        "text": "Look up.",
+        "next": "start3"
+      },
+      {
+        "text": "Look up.",
+        "next": "start3"
+      }
+    ]
+  },
+
+  "start3": {
+    "lines": [
+      {"character": "system", "text": "You see a woman in her twenties."}
+    ],
+    "choices": [
+      {
+        "text": "Listen.",
+        "next": "mission"
+      },
+      {
+        "text": "Listen.",
+        "next": "mission"
+      },
+      {
+        "text": "Listen.",
+        "next": "mission"
+      }
+    ]
+  },
+  
+  "mission": {
+    "lines": [
+      {"character": "raven", "text": "Are you okay? You took quite the beating there you know."}
+    ],
+    "choices": [
+      {
+        "text": "I'm fine.",
+        "next": "mission1"
+      },
+      {
+        "text": "Been better.",
+        "next": "mission2"
+      },
+      {
+        "text": "*Stay silent*",
+        "next": "mission3"
+      }
+    ]
+  },
+
+  "mission1": {
+    "lines": [
+      {"character": "raven", "text": "Good to hear. Now, are you ready to hear the gig?"}
+    ],
+    "choices": [
+      {
+        "text": "I'm all ears.",
+        "next": "gig"
+      },
+      {
+        "text": "Go on...",
+        "next": "gig"
+      },
+      {
+        "text": "No.",
+        "next": "end_wimp"
+      }
+    ]
+  },
+
+  "mission2": {
+    "lines": [
+      {"character": "raven", "text": "Sorry about that. Now, are you ready to hear the gig?"}
+    ],
+    "choices": [
+      {
+        "text": "I'm all ears.",
+        "next": "gig"
+      },
+      {
+        "text": "Go on...",
+        "next": "gig"
+      },
+      {
+        "text": "No.",
+        "next": "end_wimp"
+      }
+    ]
+  },
+
+  "mission3": {
+    "lines": [
+      {"character": "raven", "text": "Oookay? Now, are you ready to hear the gig?"}
+    ],
+    "choices": [
+      {
+        "text": "I'm all ears.",
+        "next": "gig"
+      },
+      {
+        "text": "Go on...",
+        "next": "gig"
+      },
+      {
+        "text": "No.",
+        "next": "end_wimp"
+      }
+    ]
+  },
+
+  "gig": {
+    "lines": [
+      {"character": "raven", "text": "You and I have been tasked by a secret benefactor with infiltrating the governor's house and stealing an artifact."}
+    ],
+    "choices": [
+      {
+        "text": "Go on...",
+        "next": "gig1"
+      },
+      {
+        "text": "The governor? The one armed to the teeth with corporate bodyguards?",
+        "next": "gig2"
+      },
+      {
+        "text": "And am I allowed to ask who this 'benefactor' is?",
+        "next": "gig3"
+      }
+    ]
+  },
+
+  "gig1": {
+    "lines": [
+      {"character": "raven", "text": "Well, that's it. I was just told about some implant, no idea what else is in store, just a photo. You in?"}
+    ],
+    "choices": [
+      {
+        "text": "Hell yeah!",
+        "next": "gig_accept",
+        "affinityChange": {"raven": 1}
+      },
+      {
+        "text": "Well, I guess I have nothing really to lose?",
+        "next": "gig_accept",
+        "affinityChange": {"raven": 1}
+      },
+      {
+        "text": "No.",
+        "next": "end_wimp"
+      }
+    ]
+  },
+
+  "gig2": {
+    "lines": [
+      {"character": "raven", "text": "Precisely. He has some implant, photo right here. No idea what else is in store, but I hear you;re the best. You in?"}
+    ],
+    "choices": [
+      {
+        "text": "Hell yeah!",
+        "next": "gig_accept",
+        "affinityChange": {"raven": 1}
+      },
+      {
+        "text": "Fine.",
+        "next": "gig_accept",
+        "affinityChange": {"raven": 1}
+      },
+      {
+        "text": "No.",
+        "next": "end_wimp"
+      }
+    ]
+  },
+
+  "gig3": {
+    "lines": [
+      {"character": "raven", "text": "Not until we have the goods and go get paid, I barely know myself."}
+    ],
+    "choices": [
+      {
+        "text": "Huh.",
+        "next": "gig"
+      },
+      {
+        "text": "How disappointing.",
+        "next": "gig"
+      },
+      {
+        "text": "I'm out.",
+        "next": "end_wimp"
+      }
+    ]
+  },
+
+  "gig_accept": {
+    "lines": [
+      {"character": "raven", "text": "Alright, I hope you know what you're in for. Let's get a move on then."}
+    ],
+    "choices": [
+      {
+        "text": "I know what I'm doing.",
+        "next": "gig_accept1"
+      },
+      {
+        "text": "Understood, I hope the risk is worth it.",
+        "next": "gig_accept1"
+      },
+      {
+        "text": "I’m ready for anything.",
+        "next": "gig_accept1"
+      }
+    ]
+  },
+
+  "gig_accept1": {
+    "lines": [
+      {"character": "system", "text": "You continue on the road to the governor, now would be the time to get to know your partner."}
+    ],
+    "choices": [
+      {
+        "text": "So, where are you from?",
+        "next": "gig_accept2"
+      },
+      {
+        "text": "What made you accept this gig anyways?",
+        "next": "gig_accept3"
+      },
+      {
+        "text": "*Stay silent*",
+        "next": "gig_accept4"
+      }
+    ]
+  },
+
+  "gig_accept2": {
+    "lines": [
+      {"character": "raven", "text": "Otaru, small town outside the city. My great grandparents were forced out of Hakodate by the Shogun and we kinda ended up there."}
+    ],
+    "choices": [
+      {
+        "text": "Oh, I'm sorry to hear that.",
+        "next": "gig_accept5",
+        "affinityChange": {"raven": 1}
+      },
+      {
+        "text": "Sounds rough.",
+        "next": "gig_accept5",
+        "affinityChange": {"raven": 1}
+      },
+      {
+        "text": "*Stay silent*",
+        "next": "gig_accept5"
+      }
+    ]
+  },
+
+  "gig_accept3": {
+    "lines": [
+      {"character": "raven", "text": "Money, same as anyone else."}
+    ],
+    "choices": [
+      {
+        "text": "I see.",
+        "next": "gig_accept5"
+      },
+      {
+        "text": "Seems a little out there for this high a risk.",
+        "next": "gig_accept5"
+      },
+      {
+        "text": "*Stay silent*",
+        "next": "gig_accept5"
+      }
+    ]
+  },
+
+  "gig_accept4": {
+    "lines": [
+      {"character": "system", "text": "You say nothing. Why bother getting to know her."}
+    ],
+    "choices": [
+      {
+        "text": "Exactly.",
+        "next": "gig_accept5"
+      },
+      {
+        "text": "Exactly.",
+        "next": "gig_accept5"
+      },
+      {
+        "text": "Exactly.",
+        "next": "gig_accept5"
+      }
+    ]
+  },
+
+  "end_wimp": {
+    "lines": [
+      {"character": "system", "text": "You risked nothing, and you gained nothing. Congrats. Why did you even bother turning on the game?"}
+    ],
+    "choices": [
+      {
+        "text": "Restart.",
+        "next": "start"
+      }
+    ]
+  },
+
+  "end_good": {
+    "lines": [
+      {"character": "system", "text": "Mission accomplished. You’ve gained trust and respect."}
+    ],
+    "choices": []
+  },
+
+  "end_bad": {
+    "lines": [
+      {"character": "system", "text": "Mission failed. Maybe next time."}
+    ],
+    "choices": []
+  },
+
+  "end_silent": {
+    "lines": [
+      {"character": "system", "text": "You leave the bar in silence, alone with your thoughts."}
+    ],
+    "choices": []
+  }
+}

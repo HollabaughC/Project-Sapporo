@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Share+Tech+Mono&display=swap');
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  font-family: 'Share Tech Mono', monospace;
+  color: #dcd6f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.page-wrapper {
+  width: 50vw;                  /* Half the screen width */
+  max-width: 800px;             /* Optional: cap width on large screens */
+  height: 90vh;                 /* Leave a little vertical margin */
+  margin: auto;                 /* Center horizontally and vertically */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #1b152e;
+  border: 2px solid #5a3e9f;
+  border-radius: 15px;
+  box-shadow: inset 0 0 30px #3f2a71;
+  padding: 2rem;
+  box-sizing: border-box;
+  gap: 1.5rem;
+}
+
+header {
+  text-align: center;
+  user-select: none;
+}
+
+header h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 2.8rem;
+  color: #ff59c6;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 8px #ff59c6,
+    0 0 18px #e6349e;
+  margin: 0;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid #e6349e;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+#dialogue-box {
+  min-height: 150px;
+  background: #271f48;
+  border-radius: 12px;
+  padding: 1.4rem 2rem;
+  box-shadow:
+    inset 0 0 12px #482e8d;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #d8d2ff;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  text-shadow: 0 0 4px #6f65ab;
+}
+
+#character-name {
+  font-weight: 700;
+  color: #ffd84c;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.35rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  user-select: none;
+  text-shadow:
+    0 0 5px #d8c24a;
+  min-height: 1.6rem;
+}
+
+#dialogue-text {
+  font-family: 'Share Tech Mono', monospace;
+  color: #dcd6f7;
+  text-shadow:
+    0 0 4px #7d7acc;
+}
+
+.button-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.choice-btn {
+  flex: 1;
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: center;
+  padding: 0.8rem 1.1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  white-space: normal;
+  word-break: break-word;
+  position: relative;
+  transition:
+    background-color 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.25s ease;
+  font-family: 'Share Tech Mono', monospace;
+  border: 3px solid transparent;
+  box-shadow: inset 0 0 6px transparent;
+}
+
+.choice-btn.neon-pink {
+  background: linear-gradient(145deg, #330033, #661166);
+  border-color: #ff39b8;
+  color: #ff8bcb;
+  box-shadow:
+    inset 0 0 12px #ff39b8;
+}
+
+.choice-btn.neon-pink:hover:not(:disabled) {
+  background: linear-gradient(145deg, #661166, #ff39b8);
+  color: #fff0f8;
+  box-shadow:
+    0 0 15px #ff39b8,
+    inset 0 0 18px #ff67c8;
+}
+
+.choice-btn.neon-cyan {
+  background: linear-gradient(145deg, #003333, #116666);
+  border-color: #39e6ff;
+  color: #8befff;
+  box-shadow:
+    inset 0 0 12px #39e6ff;
+}
+
+.choice-btn.neon-cyan:hover:not(:disabled) {
+  background: linear-gradient(145deg, #116666, #39e6ff);
+  color: #e0ffff;
+  box-shadow:
+    0 0 15px #39e6ff,
+    inset 0 0 18px #67f0ff;
+}
+
+.choice-btn.neon-lime {
+  background: linear-gradient(145deg, #224400, #447700);
+  border-color: #b6ff39;
+  color: #dfff8b;
+  box-shadow:
+    inset 0 0 12px #b6ff39;
+}
+
+.choice-btn.neon-lime:hover:not(:disabled) {
+  background: linear-gradient(145deg, #447700, #b6ff39);
+  color: #f7ffdd;
+  box-shadow:
+    0 0 15px #b6ff39,
+    inset 0 0 18px #d6ff67;
+}
+
+.choice-btn:disabled {
+  background: #1e1734;
+  color: #5f5a7a;
+  border-color: #372f5a;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.choice-btn .affinity-requirement {
+  position: absolute;
+  bottom: 5px;
+  right: 8px;
+  font-size: 0.75rem;
+  color: #f58aff;
+  user-select: none;
+  font-weight: 700;
+  text-shadow: 0 0 5px #b361a9;
+  font-family: 'Orbitron', sans-serif;
+}
+
+footer {
+  text-align: center;
+  user-select: none;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: #8a7cc8;
+  border-top: 1px solid #3e3266;
+  padding: 1rem 0 0;
+  letter-spacing: 1.2px;
+  text-shadow: 0 0 3px #5f57a7;
+}
+
+@media (max-width: 600px) {
+  .button-container {
+    flex-direction: column;
+  }
+  .choice-btn {
+    width: 100%;
+    aspect-ratio: auto;
+    min-height: 90px;
+  }
+}
+
+#stats-box {
+  background: #2a214a;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  box-shadow: inset 0 0 10px #4a3b78;
+  font-family: 'Share Tech Mono', monospace;
+  color: #c6baff;
+  font-size: 1rem;
+  text-shadow: 0 0 4px #786ec1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+main.game-layout {
+  display: flex;
+  gap: 2rem;
+  height: 100%;
+  width: 100%;
+}
+
+.story-section {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.stats-panel {
+  flex: 1;
+  background: #221c3b;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: inset 0 0 15px #392d64;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-family: 'Share Tech Mono', monospace;
+  color: #eee;
+  min-width: 180px;
+}
+
+.stat-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  border-left: 5px solid;
+  background: #2e254d;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  text-shadow: 0 0 4px #000;
+}
+
+.stat-icon {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+.stat-name {
+  flex: 1;
+}
+
+.stat-value {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  main.game-layout {
+    flex-direction: column;
+  }
+
+  .stats-panel {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1rem;
+  }
+
+  .stat-line {
+    width: 45%;
+    justify-content: flex-start;
+  }
+
+  .story-section {
+    width: 100%;
+  }
+}
