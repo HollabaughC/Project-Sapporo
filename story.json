@@ -164,7 +164,7 @@
 
   "gig": {
     "lines": [
-      {"character": "raven", "text": "You and I have been tasked by a secret benefactor with infiltrating the governor's house and stealing an artifact."}
+      {"character": "raven", "text": "You and I have been tasked by a secret benefactor with infiltrating the governor's 'house' and stealing an artifact."}
     ],
     "choices": [
       {
@@ -206,7 +206,7 @@
 
   "gig2": {
     "lines": [
-      {"character": "raven", "text": "Precisely. He has some implant, photo right here. No idea what else is in store, but I hear you;re the best. You in?"}
+      {"character": "raven", "text": "Precisely. He has some implant, photo right here. No idea what else is in store, but I hear you're the best. You in?"}
     ],
     "choices": [
       {
@@ -344,6 +344,202 @@
       {
         "text": "Exactly.",
         "next": "gig_accept5"
+      }
+    ]
+  },
+
+  "gig_accept5": {
+    "lines": [
+      {"character": "system", "text": "You reach the coast north of Sapporo. You don't see any buildings in the immediate area, just an island in the distance obscured by fog."}
+    ],
+    "choices": [
+      {
+        "text": "So, where is his 'house'?",
+        "next": "gig_accept6"
+      },
+      {
+        "text": "You know, I would have expected something more... obvious?",
+        "next": "gig_accept6"
+      },
+      {
+        "text": "So why are we in the middle of nowhere?",
+        "next": "gig_accept6"
+      }
+    ]
+  },
+
+  "gig_accept6": {
+    "lines": [
+      {"character": "raven", "text": "Ah, you really new here. He lives on that island over there, though the fog does make it pretty hard to actually see."}
+    ],
+    "choices": [
+      {
+        "text": "So, if we can't see it, how do we get in?",
+        "next": "gig_accept7"
+      },
+      {
+        "text": "I suppose it makes sense for someone that high-profile. How do we make it inside?",
+        "next": "gig_accept7"
+      },
+      {
+        "text": "There has to be some way around this fog, right?",
+        "next": "gig_accept7"
+      }
+    ]
+  },
+
+  "gig_accept7": {
+    "lines": [
+      {"character": "raven", "text": "That's just it, we don't get inside by swimming over. Rumor has it, the island is just a facade with a larger facility underneath. Stands to reason there is a land access point."}
+    ],
+    "choices": [
+      {
+        "text": "But I don't see anything of the sort?",
+        "next": "gig_accept8"
+      },
+      {
+        "text": "Do you really believe some crackpot rumor?",
+        "next": "gig_accept9",
+        "affinityChange": {"raven": -1}
+      },
+      {
+        "text": "I doubt he would make it easy to find...",
+        "next": "gig_accept10"
+      }
+    ]
+  },
+
+  "gig_accept8": {
+    "lines": [
+      {"character": "raven", "text": "Well, we should look around then. Maybe we can find something."}
+    ],
+    "choices": [
+      {
+        "text": "*Scan the area for quickhack vulnerabilities*",
+        "next": "gig_accept11",
+        "skillChange": {"hacking": 1}
+      },
+      {
+        "text": "*Ask Raven to check underwater*",
+        "next": "gig_accept12",
+        "skillChange": {"persuasion": 1},
+        "affinityReq": {"raven": 1}
+      },
+      {
+        "text": "*Try knocking over rocks for a trapdoor*",
+        "next": "gig_accept13",
+        "skillChange": {"combat": 1}
+      }
+    ]
+  },
+
+  "gig_accept9": {
+    "lines": [
+      {"character": "raven", "text": "Humor me, beats the hell out of swimming over."}
+    ],
+    "choices": [
+      {
+        "text": "*Scan the area for quickhack vulnerabilities*",
+        "next": "gig_accept11",
+        "skillChange": {"hacking": 1}
+      },
+      {
+        "text": "*Ask Raven to check underwater*",
+        "next": "gig_accept12",
+        "skillChange": {"persuasion": 1},
+        "affinityReq": {"raven": 1}
+      },
+      {
+        "text": "*Try knocking over rocks for a trapdoor*",
+        "next": "gig_accept13",
+        "skillChange": {"combat": 1}
+      }
+    ]
+  },
+
+  "gig_accept10": {
+    "lines": [
+      {"character": "raven", "text": "Precisely. But maybe he got cocky, look around, maybe we can find a way in."}
+    ],
+    "choices": [
+      {
+        "text": "*Scan the area for quickhack vulnerabilities*",
+        "next": "gig_accept11",
+        "skillChange": {"hacking": 1}
+      },
+      {
+        "text": "*Ask Raven to check underwater*",
+        "next": "gig_accept12",
+        "skillChange": {"persuasion": 1},
+        "affinityReq": {"raven": 1}
+      },
+      {
+        "text": "*Try knocking over rocks for a trapdoor*",
+        "next": "gig_accept13",
+        "skillChange": {"combat": 1}
+      }
+    ]
+  },
+
+  "gig_accept11": {
+    "lines": [
+      {"character": "system", "text": "You find a quickhack point, suspicious to find in a bush..."}
+    ],
+    "choices": [
+      {
+        "text": "*Hack whatever the thing is*",
+        "next": "hack_in",
+        "skillReq": {"hacking": 1}
+      },
+      {
+        "text": "*Hack whatever the thing is*",
+        "next": "hack_in",
+        "skillReq": {"hacking": 1}
+      },
+      {
+        "text": "*Hack whatever the thing is*",
+        "next": "hack_in",
+        "skillReq": {"hacking": 1}
+      }
+    ]
+  },
+
+  "gig_accept12": {
+    "lines": [
+      {"character": "raven", "text": "Fine, but you owe me one."}
+    ],
+    "choices": [
+      {
+        "text": "Yeah yeah.",
+        "next": "talk_in"
+      },
+      {
+        "text": "You can hold me to it.",
+        "next": "talk_in"
+      },
+      {
+        "text": "Don't worry, I'll repay you ;).",
+        "next": "talk_in"
+      }
+    ]
+  },
+
+"gig_accept13": {
+    "lines": [
+      {"character": "system", "text": "You found a trapdoor. Seems a bit careless to put it under a rock that easy to move."}
+    ],
+    "choices": [
+      {
+        "text": "*Open the door*",
+        "next": "punch_in"
+      },
+      {
+        "text": "*Open the door*",
+        "next": "punch_in"
+      },
+      {
+        "text": "*Open the door*",
+        "next": "punch_in"
       }
     ]
   },

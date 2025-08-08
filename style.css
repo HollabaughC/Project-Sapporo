@@ -13,10 +13,10 @@ html, body {
 }
 
 .page-wrapper {
-  width: 50vw;                  /* Half the screen width */
-  max-width: 800px;             /* Optional: cap width on large screens */
-  height: 90vh;                 /* Leave a little vertical margin */
-  margin: auto;                 /* Center horizontally and vertically */
+  width: 50vw;
+  max-width: 800px;
+  height: 90vh;
+  margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -208,13 +208,17 @@ footer {
 
 @media (max-width: 600px) {
   .button-container {
-    flex-direction: column;
-  }
-  .choice-btn {
-    width: 100%;
-    aspect-ratio: auto;
-    min-height: 90px;
-  }
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.choice-btn {
+  flex: 1;
+  aspect-ratio: 1 / 1;
+  min-width: 0;
+  visibility: visible;
+}
 }
 
 #stats-box {
@@ -306,4 +310,16 @@ main.game-layout {
   .story-section {
     width: 100%;
   }
+}
+
+.small-btn {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  aspect-ratio: auto;
+  width: auto;
+  min-height: auto;
+  border-radius: 8px;
+}
+.small-btn:hover {
+  transform: scale(1.05);
 }
