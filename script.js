@@ -149,10 +149,29 @@ async function renderNode(nodeId) {
   currentNode = nodeId;
   setCookie("storyPath", storyPath);
   setCookie("currentNode", currentNode);
+
   const lastLine = node.lines[node.lines.length - 1];
-  const charName = getCharacterName(lastLine.character);
+  const charId = lastLine.character;
+  const charName = getCharacterName(charId);
   const dialogueText = lastLine.text;
-  document.getElementById('character-name').textContent = charName;
+
+  const nameElement = document.getElementById('character-name');
+  const imageElement = document.getElementById('character-image');
+
+  nameElement.textContent = charName;
+
+  if (charId && charactersData[charId] && charactersData[charId].image) {
+    imageElement.src = charactersData[charId].image;
+    imageElement.style.display = 'inline-block';
+
+    const fontSize = parseFloat(window.getComputedStyle(nameElement).fontSize);
+    imageElement.style.height = `${fontSize * 3}px`;
+    imageElement.style.width = 'auto';
+  } else {
+    imageElement.style.display = 'none';
+    imageElement.src = '';
+  }
+
   const dialogueElement = document.getElementById('dialogue-text');
   const buttons = [
     document.getElementById('choice1'),
@@ -160,6 +179,7 @@ async function renderNode(nodeId) {
     document.getElementById('choice3')
   ];
   buttons.forEach(btn => btn.style.display = 'none');
+
   if (node.choices && node.choices.length > 0) {
     for (let i = 0; i < 3; i++) {
       const choice = node.choices[i];
@@ -205,6 +225,7 @@ async function renderNode(nodeId) {
       };
     }
   }
+  
   typeText(dialogueElement, dialogueText);
 }
 

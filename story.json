@@ -164,7 +164,7 @@
 
   "gig": {
     "lines": [
-      {"character": "raven", "text": "You and I have been tasked by a secret benefactor with infiltrating the governor's 'house' and stealing an artifact."}
+      {"character": "raven", "text": "You and I have been tasked by a secret benefactor with infiltrating the governor's mansion and stealing an artifact."}
     ],
     "choices": [
       {
@@ -354,7 +354,7 @@
     ],
     "choices": [
       {
-        "text": "So, where is his 'house'?",
+        "text": "So, where is his mansion?",
         "next": "gig_accept6"
       },
       {
@@ -511,15 +511,18 @@
     "choices": [
       {
         "text": "Yeah yeah.",
-        "next": "talk_in"
+        "next": "talk_in",
+        "skillReq": {"persuasion": 1}
       },
       {
         "text": "You can hold me to it.",
-        "next": "talk_in"
+        "next": "talk_in",
+        "skillReq": {"persuasion": 1}
       },
       {
         "text": "Don't worry, I'll repay you ;).",
-        "next": "talk_in"
+        "next": "talk_in",
+        "skillReq": {"persuasion": 1}
       }
     ]
   },
@@ -531,15 +534,309 @@
     "choices": [
       {
         "text": "*Open the door*",
-        "next": "punch_in"
+        "next": "punch_in",
+        "skillReq": {"combat": 1}
       },
       {
         "text": "*Open the door*",
-        "next": "punch_in"
+        "next": "punch_in",
+        "skillReq": {"combat": 1}
       },
       {
         "text": "*Open the door*",
-        "next": "punch_in"
+        "next": "punch_in",
+        "skillReq": {"combat": 1}
+      }
+    ]
+  },
+
+"hack_in": {
+    "lines": [
+      {"character": "raven", "text": "Wow, color me impressed! Well, and baffled. What kind of idiot leaves a vulnerable trapdoor this close to the road?"}
+    ],
+    "choices": [
+      {
+        "text": "Could be a trap.",
+        "next": "hack_in1"
+      },
+      {
+        "text": "Luckily for us, the idiot whose mansion we're breaking in to.",
+        "next": "hack_in2"
+      },
+      {
+        "text": "Give me some credit, it wasn't *that* easy.",
+        "next": "hack_in3"
+      }
+    ]
+  },
+
+  "hack_in1": {
+    "lines": [
+      {"character": "raven", "text": "Could be, but we won't know until we continue. You ready?"}
+    ],
+    "choices": [
+      {
+        "text": "Yes, let's go.",
+        "next": "hack_in4"
+      },
+      {
+        "text": "All good.",
+        "next": "hack_in4"
+      },
+      {
+        "text": "One sec, let me check for cameras.",
+        "next": "hack_in5",
+        "skillReq": {"hacking": 3}
+      }
+    ]
+  },
+
+  "hack_in2": {
+    "lines": [
+      {"character": "raven", "text": "Precisely. You ready?"}
+    ],
+    "choices": [
+      {
+        "text": "Yes, let's go.",
+        "next": "hack_in4"
+      },
+      {
+        "text": "All good.",
+        "next": "hack_in4"
+      },
+      {
+        "text": "One sec, let me check for cameras.",
+        "next": "hack_in5",
+        "skillReq": {"hacking": 3}
+      }
+    ]
+  },
+
+  "hack_in3": {
+    "lines": [
+      {"character": "raven", "text": "Some humility? I like that. You ready?"}
+    ],
+    "choices": [
+      {
+        "text": "Yes, let's go.",
+        "next": "hack_in4"
+      },
+      {
+        "text": "All good.",
+        "next": "hack_in4"
+      },
+      {
+        "text": "One sec, let me check for cameras.",
+        "next": "hack_in5",
+        "skillReq": {"hacking": 3}
+      }
+    ]
+  },
+
+  "hack_in4": {
+    "lines": [
+      {"character": "system", "text": "You go down the trapdoor. It appears to lead to a maintenence shaft going down beneath the ocean. You guess Raven was right after all."}
+    ],
+    "choices": [
+      {
+        "text": "*Continue down*",
+        "next": "hack_in6"
+      },
+      {
+        "text": "*Continue down*",
+        "next": "hack_in6"
+      },
+      {
+        "text": "*Continue down*",
+        "next": "hack_in6"
+      }
+    ]
+  },
+
+  "hack_in5": {
+    "lines": [
+      {"character": "system", "text": "No cameras spotted. Weird. May as well go ahead."}
+    ],
+    "choices": [
+      {
+        "text": "All clear.",
+        "next": "hack_in4",
+        "affinityChange": {"raven": 1}
+      },
+      {
+        "text": "All clear.",
+        "next": "hack_in4",
+        "affinityChange": {"raven": 1}
+      },
+      {
+        "text": "All clear.",
+        "next": "hack_in4",
+        "affinityChange": {"raven": 1}
+      }
+    ]
+  },
+
+  "hack_in6": {
+    "lines": [
+      {"character": "raven", "text": "Just an FYI, I have no idea what we will find down here until we reach the mansion itself. Keep a look out for any tech that could get us caught."}
+    ],
+    "choices": [
+      {
+        "text": "Gotcha.",
+        "next": "underwater"
+      },
+      {
+        "text": "I'll definitely try.",
+        "next": "underwater"
+      },
+      {
+        "text": "*Stay silent*",
+        "next": "underwater"
+      }
+    ]
+  },
+
+  "talk_in": {
+    "lines": [
+      {"character": "raven", "text": "Oh my god, there actually is something off the shore. You mind taking a look with me?"}
+    ],
+    "choices": [
+      {
+        "text": "Let's go.",
+        "next": "talk_in1"
+      },
+      {
+        "text": "Can I know what it is first?",
+        "next": "talk_in2"
+      },
+      {
+        "text": "You sure it's safe?",
+        "next": "talk_in3"
+      }
+    ]
+  },
+
+  "talk_in1": {
+    "lines": [
+      {"character": "raven", "text": "Cool, come check it out!"}
+    ],
+    "choices": [
+      {
+        "text": "Okay.",
+        "next": "talk_in4"
+      },
+      {
+        "text": "Okay.",
+        "next": "talk_in4"
+      },
+      {
+        "text": "Okay.",
+        "next": "talk_in4"
+      }
+    ]
+  },
+
+  "talk_in2": {
+    "lines": [
+      {"character": "raven", "text": "Uh, not entirely sure. Just come check it out!"}
+    ],
+    "choices": [
+      {
+        "text": "Okay.",
+        "next": "talk_in4"
+      },
+      {
+        "text": "Okay.",
+        "next": "talk_in4"
+      },
+      {
+        "text": "Okay.",
+        "next": "talk_in4"
+      }
+    ]
+  },
+
+  "talk_in3": {
+    "lines": [
+      {"character": "raven", "text": "I'm alive aren't I? Just come check it out!"}
+    ],
+    "choices": [
+      {
+        "text": "Okay.",
+        "next": "talk_in4"
+      },
+      {
+        "text": "Okay.",
+        "next": "talk_in4"
+      },
+      {
+        "text": "Okay.",
+        "next": "talk_in4"
+      }
+    ]
+  },
+
+  "talk_in4": {
+    "lines": [
+      {"character": "system", "text": "Looks like a trapdoor of sorts in the water."}
+    ],
+    "choices": [
+      {
+        "text": "*Open it*",
+        "next": "talk_in5"
+      },
+      {
+        "text": "*Ask Raven to open it*",
+        "next": "talk_in6",
+        "skillReq": {"persuasion": 3},
+        "affinityReq": {"raven": 1}
+      },
+      {
+        "text": "*Kick it in*",
+        "next": "talk_in5"
+      }
+    ]
+  },
+
+  "talk_in5": {
+    "lines": [
+      {"character": "raven", "text": "A maintenence shaft? We have to continue through, but just as an FYI I have no idea what we will find until the mansion. Watch out down here just in case, you can't talk your way out of being shot by a turret."}
+    ],
+    "choices": [
+      {
+        "text": "Gotcha.",
+        "next": "underwater"
+      },
+      {
+        "text": "I'll do my best.",
+        "next": "underwater"
+      },
+      {
+        "text": "*Stay silent*",
+        "next": "underwater"
+      }
+    ]
+  },
+
+  "talk_in6": {
+    "lines": [
+      {"character": "raven", "text": "Only because I like you. Looks like a maintenence shaft. Just as an FYI, I have no idea what we will find until we reach the mansion. Watch out down here just in case, even you can't talk your way out of being shot by a turret."}
+    ],
+    "choices": [
+      {
+        "text": "I'll take my chances.",
+        "next": "underwater",
+        "affinityChange": {"raven": 1}
+      },
+      {
+        "text": "Understood.",
+        "next": "underwater",
+        "affinityChange": {"raven": 1}
+      },
+      {
+        "text": "Can't fault me if I try.",
+        "next": "underwater",
+        "affinityChange": {"raven": 1}
       }
     ]
   },

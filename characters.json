@@ -1,7 +1,8 @@
 {
   "raven": {
     "name": "Raven",
-    "affinity": 0
+    "affinity": 0,
+    "image": "img/ravenbig.png"
   },
   "system": {
     "name": "",
