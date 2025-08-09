@@ -310,16 +310,18 @@
 
   "gig_accept3": {
     "lines": [
-      {"character": "raven", "text": "Money, same as anyone else."}
+      {"character": "raven", "text": "Money, same as anyone else. My great grandparents were stripped of their propery and reputation, family never recovered since."}
     ],
     "choices": [
       {
-        "text": "I see.",
-        "next": "gig_accept5"
+        "text": "I'm so sorry.",
+        "next": "gig_accept5",
+        "affinityChange": {"raven": 1}
       },
       {
-        "text": "Seems a little out there for this high a risk.",
-        "next": "gig_accept5"
+        "text": "Sounds, awful.",
+        "next": "gig_accept5",
+        "affinityChange": {"raven": 1}
       },
       {
         "text": "*Stay silent*",
@@ -988,20 +990,433 @@
 
   "underwater": {
     "lines": [
-      {"character": "system", "text": "You continue down the maintenence shaft, watching out for serveillance or traps. You try to think of something to say to pass the time."}
+      {"character": "system", "text": "You continue down the maintenence shaft, watching out for surveillance or traps. You try to think of something to say to pass the time."}
     ],
     "choices": [
       {
-        "text": "I'd like to see him try. Let's go on.",
-        "next": "underwater1"
+        "text": "So, what exactly happened to your family?",
+        "next": "underwater1",
+        "affinityChange": {"raven": 1},
+        "affinityReq": {"raven": 2}
       },
       {
-        "text": "Guess we'll have to find out then.",
-        "next": "underwater1"
+        "text": "What do you plan on doing after this?",
+        "next": "underwater4",
+        "affinityChange": {"raven": 1}
       },
       {
-        "text": "Understood.",
-        "next": "underwater1"
+        "text": "*Stay silent*",
+        "next": "underwater5"
+      }
+    ]
+  },
+
+  "underwater1": {
+    "lines": [
+      {"character": "raven", "text": "My great grandparents, they weren't typical. Japanese government stripped them of their assets and forced them north."}
+    ],
+    "choices": [
+      {
+        "text": "Why would they do something like that?",
+        "next": "underwater2"
+      },
+      {
+        "text": "Why?",
+        "next": "underwater2"
+      },
+      {
+        "text": "That sounds awful, why would that happen?",
+        "next": "underwater2"
+      }
+    ]
+  },
+
+  "underwater2": {
+    "lines": [
+      {"character": "raven", "text": "Great grandparents were mixed, Ainu farmer in his ancestral land and black woman escaping segregation in the US. Not exactly a combination Japan tolerated at the time. When Hokkaido was annexed, everything they had was taken. Family has been shunned since."}
+    ],
+    "choices": [
+      {
+        "text": "I didn't know that. I'm sorry.",
+        "next": "underwater3"
+      },
+      {
+        "text": "I didn't know that. I'm sorry.",
+        "next": "underwater3"
+      },
+      {
+        "text": "I didn't know that. I'm sorry.",
+        "next": "underwater3"
+      }
+    ]
+  },
+
+  "underwater3": {
+    "lines": [
+      {"character": "raven", "text": "It is what it is. Good at least to have someone like you who has some empathy."}
+    ],
+    "choices": [
+      {
+        "text": "Of course, any time.",
+        "next": "underwater6",
+        "affinityChange": {"raven": 1}
+      },
+      {
+        "text": "Of course, any time.",
+        "next": "underwater6",
+        "affinityChange": {"raven": 1}
+      },
+      {
+        "text": "Of course, any time.",
+        "next": "underwater6",
+        "affinityChange": {"raven": 1}
+      }
+    ]
+  },
+
+  "underwater4": {
+    "lines": [
+      {"character": "raven", "text": "Gonna leave Japan. Not much here for me anyways."}
+    ],
+    "choices": [
+      {
+        "text": "I see.",
+        "next": "underwater6"
+      },
+      {
+        "text": "I wish you luck on that.",
+        "next": "underwater6"
+      },
+      {
+        "text": "Good riddance, am I right?",
+        "next": "underwater6"
+      }
+    ]
+  },
+
+  "underwater5": {
+    "lines": [
+      {"character": "system", "text": "Well, no point in talking to her."}
+    ],
+    "choices": [
+      {
+        "text": "Exactly.",
+        "next": "underwater6"
+      },
+      {
+        "text": "Exactly.",
+        "next": "underwater6"
+      },
+      {
+        "text": "Exactly.",
+        "next": "underwater6"
+      }
+    ]
+  },
+
+  "underwater6": {
+    "lines": [
+      {"character": "system", "text": "You reach the end of the maintenence shaft. You peak out past the exit and see a big door with two guards near it. They don't seem to have spotted you."}
+    ],
+    "choices": [
+      {
+        "text": "*Consult Raven*",
+        "next": "underwater7"
+      },
+      {
+        "text": "*Consult Raven*",
+        "next": "underwater7"
+      },
+      {
+        "text": "*Run at the guards*",
+        "next": "end_idiot"
+      }
+    ]
+  },
+
+  "underwater7": {
+    "lines": [
+      {"character": "raven", "text": "Looks like we've reached something notable. At least enough to have 2 people on payroll to guard it. No idea how we get past them though."}
+    ],
+    "choices": [
+      {
+        "text": "*Check for quickhack point*",
+        "next": "underwater8",
+        "skillReq": {"hacking": 1},
+        "skillChange": {"hacking": 1}
+      },
+      {
+        "text": "*Try talking to the guards*",
+        "next": "underwater13",
+        "skillReq": {"persuasion": 1},
+        "skillChange": {"persuasion": 1}
+      },
+      {
+        "text": "*Ask Raven to take out guards together*",
+        "next": "underwater10",
+        "skillReq": {"combat": 1},
+        "skillChange": {"combat": 1},
+        "affinityReq": {"raven": 2}
+      }
+    ]
+  },
+
+  "underwater8": {
+    "lines": [
+      {"character": "system", "text": "You find the door has a digital lock. You hack it open, causing it to swing into and knock out both guards."}
+    ],
+    "choices": [
+      {
+        "text": "We got it!",
+        "next": "underwater9"
+      },
+      {
+        "text": "That worked?",
+        "next": "underwater9"
+      },
+      {
+        "text": "Are they out cold?",
+        "next": "underwater9"
+      }
+    ]
+  },
+
+  "underwater9": {
+    "lines": [
+      {"character": "raven", "text": "Looks like it. I'm baffled that worked. But, I guess we should count our blessings and move forward."}
+    ],
+    "choices": [
+      {
+        "text": "*Continue ahead*",
+        "next": "room"
+      },
+      {
+        "text": "*Continue ahead*",
+        "next": "room"
+      },
+      {
+        "text": "*Continue ahead*",
+        "next": "room"
+      }
+    ]
+  },
+
+  "underwater10": {
+    "lines": [
+      {"character": "raven", "text": "Uh, sure. On 3!"}
+    ],
+    "choices": [
+      {
+        "text": "1,2,3!",
+        "next": "underwater11"
+      },
+      {
+        "text": "1,2,3!",
+        "next": "underwater11"
+      },
+      {
+        "text": "1,2,3!",
+        "next": "underwater11"
+      }
+    ]
+  },
+
+  "underwater11": {
+    "lines": [
+      {"character": "system", "text": "You catch the guards off guard. You bash them against the wall, knocking them out cold."}
+    ],
+    "choices": [
+      {
+        "text": "*Search for a key with Raven*",
+        "next": "underwater12"
+      },
+      {
+        "text": "*Search for a key with Raven*",
+        "next": "underwater12"
+      },
+      {
+        "text": "*Search for a key with Raven*",
+        "next": "underwater12"
+      }
+    ]
+  },
+
+  "underwater12": {
+    "lines": [
+      {"character": "raven", "text": "I found a key, let's move forward."}
+    ],
+    "choices": [
+      {
+        "text": "*Continue ahead*",
+        "next": "room"
+      },
+      {
+        "text": "*Continue ahead*",
+        "next": "room"
+      },
+      {
+        "text": "*Continue ahead*",
+        "next": "room"
+      }
+    ]
+  },
+
+  "underwater13": {
+    "lines": [
+      {"character": "system", "text": "You inexplicably decide to walk up to the guards to negotiate your way in."}
+    ],
+    "choices": [
+      {
+        "text": "*Talk to the guards*",
+        "next": "underwater14"
+      },
+      {
+        "text": "*Talk to the guards*",
+        "next": "underwater14"
+      },
+      {
+        "text": "*Talk to the guards*",
+        "next": "underwater14"
+      }
+    ]
+  },
+
+  "underwater14": {
+    "lines": [
+      {"character": "guard1", "text": "Who the hell are you?"}
+    ],
+    "choices": [
+      {
+        "text": "An intern?",
+        "next": "underwater15"
+      },
+      {
+        "text": "The janitor?",
+        "next": "underwater15"
+      },
+      {
+        "text": "I lost my uniform?",
+        "next": "underwater15"
+      }
+    ]
+  },
+
+  "underwater15": {
+    "lines": [
+      {"character": "guard1", "text": "See that just sounds wrong."}
+    ],
+    "choices": [
+      {
+        "text": "Uhhh...",
+        "next": "underwater16"
+      },
+      {
+        "text": "Uhhh...",
+        "next": "underwater16"
+      },
+      {
+        "text": "Uhhh...",
+        "next": "underwater16"
+      }
+    ]
+  },
+
+  "underwater16": {
+    "lines": [
+      {"character": "guard2", "text": "Well hold on, didn't the governor just say something about a couple of new hires?"}
+    ],
+    "choices": [
+      {
+        "text": "Continue",
+        "next": "underwater17"
+      },
+      {
+        "text": "Continue",
+        "next": "underwater17"
+      },
+      {
+        "text": "Continue",
+        "next": "underwater17"
+      }
+    ]
+  },
+
+  "underwater17": {
+    "lines": [
+      {"character": "guard1", "text": "Honestly, no idea. He kinda tends to ramble, don't really pay all that much attention."}
+    ],
+    "choices": [
+      {
+        "text": "Continue",
+        "next": "underwater18"
+      },
+      {
+        "text": "Continue",
+        "next": "underwater18"
+      },
+      {
+        "text": "Continue",
+        "next": "underwater18"
+      }
+    ]
+  },
+
+  "underwater18": {
+    "lines": [
+      {"character": "guard2", "text": "No, no. I am definitely sure we were getting new hires. Just let them in."}
+    ],
+    "choices": [
+      {
+        "text": "Continue",
+        "next": "underwater19"
+      },
+      {
+        "text": "Continue",
+        "next": "underwater19"
+      },
+      {
+        "text": "Continue",
+        "next": "underwater19"
+      }
+    ]
+  },
+
+  "underwater19": {
+    "lines": [
+      {"character": "guard1", "text": "Uhhh, okay. Go on in then. Just, make sure not to break anything."}
+    ],
+    "choices": [
+      {
+        "text": "Go through door",
+        "next": "underwater20"
+      },
+      {
+        "text": "Go through door",
+        "next": "underwater20"
+      },
+      {
+        "text": "Go through door",
+        "next": "underwater20"
+      }
+    ]
+  },
+
+  "underwater20": {
+    "lines": [
+      {"character": "raven", "text": "I legitimately can't believe that worked. Well, let's continue forward."}
+    ],
+    "choices": [
+      {
+        "text": "Go through door",
+        "next": "room"
+      },
+      {
+        "text": "Go through door",
+        "next": "room"
+      },
+      {
+        "text": "Go through door",
+        "next": "room"
       }
     ]
   },
@@ -1012,30 +1427,37 @@
     ],
     "choices": [
       {
-        "text": "Restart.",
-        "next": "start"
+        "text": "Click clear save data.",
+        "next": ""
+      },
+      {
+        "text": "Click clear save data.",
+        "next": ""
+      },
+      {
+        "text": "Click clear save data.",
+        "next": ""
       }
     ]
   },
 
-  "end_good": {
+  "end_idiot": {
     "lines": [
-      {"character": "system", "text": "Mission accomplished. You’ve gained trust and respect."}
+      {"character": "system", "text": "You died. Really feel like you dropped the ball on that one."}
     ],
-    "choices": []
-  },
-
-  "end_bad": {
-    "lines": [
-      {"character": "system", "text": "Mission failed. Maybe next time."}
-    ],
-    "choices": []
-  },
-
-  "end_silent": {
-    "lines": [
-      {"character": "system", "text": "You leave the bar in silence, alone with your thoughts."}
-    ],
-    "choices": []
+    "choices": [
+      {
+        "text": "Click clear save data.",
+        "next": ""
+      },
+      {
+        "text": "Click clear save data.",
+        "next": ""
+      },
+      {
+        "text": "Click clear save data.",
+        "next": ""
+      }
+    ]
   }
 }

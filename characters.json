@@ -4,6 +4,16 @@
     "affinity": 0,
     "image": "img/ravenbig.png"
   },
+  "guard1": {
+    "name": "Guard",
+    "affinity": 0,
+    "image": "img/guardbig.png"
+  },
+  "guard2": {
+    "name": "Other Guard",
+    "affinity": 0,
+    "image": "img/guardbig2.png"
+  },
   "system": {
     "name": "",
     "affinity": 0

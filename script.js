@@ -29,6 +29,13 @@ function deleteCookie(name) {
   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 }
 
+function saveProgress() {
+  setCookie("storyPath", storyPath);
+  setCookie("currentNode", currentNode);
+  setCookie("charactersData", JSON.stringify(charactersData));
+  setCookie("statsData", JSON.stringify(statsData));
+}
+
 async function loadJSON(path) {
   const res = await fetch(path);
   if (!res.ok) throw new Error(`Failed to load ${path}`);
@@ -147,8 +154,7 @@ async function renderNode(nodeId) {
   const node = storyData[nodeId];
   if (!node) return;
   currentNode = nodeId;
-  setCookie("storyPath", storyPath);
-  setCookie("currentNode", currentNode);
+  saveProgress();
 
   const lastLine = node.lines[node.lines.length - 1];
   const charId = lastLine.character;
@@ -205,7 +211,6 @@ async function renderNode(nodeId) {
       } else {
         btn.textContent = btnText;
       }
-      btn.dataset.next = choice.next || "";
       btn.onclick = async (event) => {
         event.stopPropagation();
         clearTimeout(typingTimeout);
@@ -213,6 +218,7 @@ async function renderNode(nodeId) {
         skipTyping = false;
         updateAffinity(choice.affinityChange);
         updateStats(choice.skillChange);
+        saveProgress();
         if (choice.next && choice.next.endsWith(".json")) {
           storyPath = choice.next;
           storyData = await loadJSON(storyPath);
@@ -243,6 +249,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("clear-save").addEventListener("click", () => {
     deleteCookie("storyPath");
     deleteCookie("currentNode");
+    deleteCookie("charactersData");
+    deleteCookie("statsData");
     location.reload();
   });
 });
@@ -251,12 +259,24 @@ async function init() {
   try {
     const savedStory = getCookie("storyPath");
     const savedNode = getCookie("currentNode");
+    const savedCharactersData = getCookie("charactersData");
+    const savedStatsData = getCookie("statsData");
+
     storyPath = savedStory || defaultStoryFile;
+
     [storyData, charactersData, statsData] = await Promise.all([
       loadJSON(storyPath),
       loadJSON(charactersPath),
       loadJSON(statsPath)
     ]);
+
+    if (savedCharactersData) {
+      charactersData = JSON.parse(savedCharactersData);
+    }
+    if (savedStatsData) {
+      statsData = JSON.parse(savedStatsData);
+    }
+
     if (savedNode && storyData[savedNode]) {
       renderNode(savedNode);
     } else {

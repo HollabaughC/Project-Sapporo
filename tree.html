@@ -162,9 +162,8 @@
     const H_SPACING = 60;
     const V_SPACING = 140;
     const positions = {};
-    let transform = {x:0, y:0, k:1}; // pan/zoom
+    let transform = {x:0, y:0, k:1};
 
-    // load story.json
     async function loadStory() {
       try {
         const res = await fetch("story.json");
@@ -179,27 +178,34 @@
 
     function buildAndRender() {
       if (!story) return;
-      // layout
-      const orderCounters = {};
+
+      const levels = {};
       const visited = new Set();
-      const layout = (key, depth=0) => {
-        if (!orderCounters[depth]) orderCounters[depth] = 0;
+      const collect = (key, depth=0) => {
         if (visited.has(key)) return;
         visited.add(key);
-        const x = (orderCounters[depth]) * (NODE_SIZE + H_SPACING);
-        const y = depth * V_SPACING;
-        positions[key] = {x, y};
-        orderCounters[depth] += 1;
+        if (!levels[depth]) levels[depth] = [];
+        levels[depth].push(key);
         const node = story[key];
         if (node && node.choices) {
-          node.choices.forEach(c => {
-            layout(c.next, depth + 1);
-          });
+          node.choices.forEach(c => collect(c.next, depth+1));
         }
       };
-      layout("start");
+      collect("start");
 
-      // compute needed size
+      const maxNodes = Math.max(...Object.values(levels).map(arr => arr.length));
+
+      Object.entries(levels).forEach(([depth, keys]) => {
+        const rowWidth = keys.length * (NODE_SIZE + H_SPACING) - H_SPACING;
+        const totalWidth = maxNodes * (NODE_SIZE + H_SPACING) - H_SPACING;
+        const offsetX = (totalWidth - rowWidth) / 2;
+        keys.forEach((key, i) => {
+          const x = offsetX + i * (NODE_SIZE + H_SPACING);
+          const y = depth * V_SPACING;
+          positions[key] = {x, y};
+        });
+      });
+
       let maxX = 0, maxY = 0;
       Object.values(positions).forEach(({x,y}) => {
         maxX = Math.max(maxX, x);
@@ -210,10 +216,8 @@
       svg.setAttribute("width", width);
       svg.setAttribute("height", height);
       svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
-
       svg.innerHTML = "";
 
-      // draw connections
       Object.entries(story).forEach(([key, node]) => {
         if (!node || !node.choices) return;
         const from = positions[key];
@@ -249,7 +253,6 @@
         });
       });
 
-      // draw nodes
       Object.entries(positions).forEach(([key, pos]) => {
         const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
         group.dataset.key = key;
@@ -293,7 +296,6 @@
         svg.appendChild(group);
       });
 
-      // initial fit
       requestAnimationFrame(() => {
         fitToViewport();
         highlightNode("start");
@@ -361,7 +363,6 @@
           const text = btn.dataset.text;
           showDetail(next, [...path, {from: key, choice: text}]);
           highlightNode(next);
-          // center that node
           centerOnNode(next);
         });
       });
@@ -373,7 +374,6 @@
       }[m]));
     }
 
-    // zoom/pan logic
     function attachInteraction() {
       let isPanning = false;
       let start = {x:0,y:0};
@@ -384,7 +384,6 @@
         svgRoot.style.transform = `translate(${x}px,${y}px) scale(${k})`;
       };
 
-      // wheel zoom
       svgContainer.addEventListener("wheel", (e) => {
         e.preventDefault();
         const rect = svgContainer.getBoundingClientRect();
@@ -393,14 +392,11 @@
         const scaleAmount = Math.exp(-e.deltaY * 0.002);
         const prevK = transform.k;
         transform.k = Math.min(4, Math.max(0.2, transform.k * scaleAmount));
-
-        // adjust pan so zoom focuses under cursor
         transform.x -= (offsetX / prevK - offsetX / transform.k);
         transform.y -= (offsetY / prevK - offsetY / transform.k);
         applyTransform();
       }, {passive:false});
 
-      // drag pan
       svgContainer.addEventListener("mousedown", (e) => {
         isPanning = true;
         svgContainer.style.cursor = "grabbing";
@@ -417,17 +413,14 @@
         svgContainer.style.cursor = "grab";
       });
 
-      // double-click reset/focus
       svgContainer.addEventListener("dblclick", (e) => {
         fitToViewport();
       });
 
-      // export
       fitBtn.addEventListener("click", fitToViewport);
     }
 
     function fitToViewport() {
-      // center tree: compute bounding box of content, then set transform to center in container
       const containerRect = svgContainer.getBoundingClientRect();
       const svgBBox = svg.getBBox();
       const margin = 40;
@@ -435,8 +428,6 @@
       const scaleY = (containerRect.height - margin) / svgBBox.height;
       const scale = Math.min(scaleX, scaleY, 1.5);
       transform.k = scale;
-
-      // center
       const targetWidth = svgBBox.width * transform.k;
       const targetHeight = svgBBox.height * transform.k;
       transform.x = (containerRect.width - targetWidth) / 2 - svgBBox.x * transform.k;
@@ -451,13 +442,11 @@
       const containerRect = svgContainer.getBoundingClientRect();
       const centerX = bbox.x + bbox.width / 2;
       const centerY = bbox.y + bbox.height / 2;
-      // bring that point to center of view
       transform.x = containerRect.width / 2 - centerX * transform.k;
       transform.y = containerRect.height / 2 - centerY * transform.k;
       applyTransform();
     }
 
-    // start
     loadStory();
   </script>
 </body>
