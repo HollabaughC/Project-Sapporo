@@ -474,7 +474,7 @@
         "affinityReq": {"raven": 1}
       },
       {
-        "text": "*Try knocking over rocks for a trapdoor*",
+        "text": "*Try knocking over rocks*",
         "next": "gig_accept13",
         "skillChange": {"combat": 1}
       }
@@ -837,6 +837,171 @@
         "text": "Can't fault me if I try.",
         "next": "underwater",
         "affinityChange": {"raven": 1}
+      }
+    ]
+  },
+
+  "punch_in": {
+    "lines": [
+      {"character": "raven", "text": "Seems real stupid to put a trapdoor in borderline plain sight..."}
+    ],
+    "choices": [
+      {
+        "text": "Let's just count our blessings.",
+        "next": "punch_in1"
+      },
+      {
+        "text": "I guess we got lucky?",
+        "next": "punch_in1"
+      },
+      {
+        "text": "Well, just makes it all the more convenient for us.",
+        "next": "punch_in1"
+      }
+    ]
+  },
+
+  "punch_in1": {
+    "lines": [
+      {"character": "raven", "text": "Well, I suppose you're right. Ready to head on?"}
+    ],
+    "choices": [
+      {
+        "text": "Yep, let's go.",
+        "next": "punch_in2"
+      },
+      {
+        "text": "What if it's a trap?",
+        "next": "punch_in3"
+      },
+      {
+        "text": "Hang on, I should kick it in just in case someone is below us.",
+        "next": "punch_in4",
+        "skillReq": {"combat": 3}
+      }
+    ]
+  },
+
+  "punch_in2": {
+    "lines": [
+      {"character": "system", "text": "You open the trapdoor and jump down. It appears to be a maintenence shaft."}
+    ],
+    "choices": [
+      {
+        "text": "Yep, let's go.",
+        "next": "punch_in5"
+      },
+      {
+        "text": "All clear!",
+        "next": "punch_in5"
+      },
+      {
+        "text": "No one in sight, let's go.",
+        "next": "punch_in5"
+      }
+    ]
+  },
+
+  "punch_in3": {
+    "lines": [
+      {"character": "raven", "text": "Very well could be, stay on guard."}
+    ],
+    "choices": [
+      {
+        "text": "Let's go.",
+        "next": "punch_in2"
+      },
+      {
+        "text": "We should go on with caution then.",
+        "next": "punch_in2"
+      },
+      {
+        "text": "Hang on, I should kick it in just in case someone is below us.",
+        "next": "punch_in4",
+        "skillReq": {"combat": 3}
+      }
+    ]
+  },
+
+  "punch_in4": {
+    "lines": [
+      {"character": "system", "text": "You kick down the door to find a maintenence shaft. There seems to be nobody inside."}
+    ],
+    "choices": [
+      {
+        "text": "All clear.",
+        "next": "punch_in6",
+        "affinityChange": {"raven": 1}
+      },
+      {
+        "text": "All clear.",
+        "next": "punch_in6",
+        "affinityChange": {"raven": 1}
+      },
+      {
+        "text": "All clear.",
+        "next": "punch_in6",
+        "affinityChange": {"raven": 1}
+      }
+    ]
+  },
+
+  "punch_in5": {
+    "lines": [
+      {"character": "raven", "text": "Perfect. FYI, I don't know what exactly lies ahead until the mansion. stay on guard."}
+    ],
+    "choices": [
+      {
+        "text": "Understood.",
+        "next": "underwater"
+      },
+      {
+        "text": "Gotcha.",
+        "next": "underwater"
+      },
+      {
+        "text": "Hear you loud and clear.",
+        "next": "underwater"
+      }
+    ]
+  },
+
+  "punch_in6": {
+    "lines": [
+      {"character": "raven", "text": "Well, better safe than sorry I guess. Hopefully we don't get billed for this... Oh and FYI, I don't know what exactly lies ahead until the mansion. stay on guard."}
+    ],
+    "choices": [
+      {
+        "text": "I'd like to see him try. Let's go on.",
+        "next": "underwater"
+      },
+      {
+        "text": "Guess we'll have to find out then.",
+        "next": "underwater"
+      },
+      {
+        "text": "Understood.",
+        "next": "underwater"
+      }
+    ]
+  },
+
+  "underwater": {
+    "lines": [
+      {"character": "system", "text": "You continue down the maintenence shaft, watching out for serveillance or traps. You try to think of something to say to pass the time."}
+    ],
+    "choices": [
+      {
+        "text": "I'd like to see him try. Let's go on.",
+        "next": "underwater1"
+      },
+      {
+        "text": "Guess we'll have to find out then.",
+        "next": "underwater1"
+      },
+      {
+        "text": "Understood.",
+        "next": "underwater1"
       }
     ]
   },
