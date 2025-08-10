@@ -126,7 +126,10 @@ async function typeText(element, text, callback) {
   element.textContent = "";
   isTyping = true;
   skipTyping = false;
+
+  const jpChars = "あいうえおかきくけこさしすせそたちつてとなにぬねのまみむめもやゆよらりるれろわをんアイウエオカキクケコサシスセソタチツテトナニヌネノマミムメモヤユヨラリルレロワヲン漢字集界電話話語速";
   let i = 0;
+
   function typeChar() {
     if (skipTyping) {
       element.textContent = currentFullText;
@@ -134,16 +137,40 @@ async function typeText(element, text, callback) {
       if (callback) callback();
       return;
     }
+
     if (i < text.length) {
-      element.textContent += text[i];
-      i++;
-      const delay = 15 + Math.random() * 25;
-      typingTimeout = setTimeout(typeChar, delay);
+      let flashes = 0;
+      const maxFlashes = 1;
+
+      function flashChar() {
+        if (flashes < maxFlashes) {
+          let randomCluster = "";
+          for (let j = 0; j < 5; j++) {
+            randomCluster += jpChars.charAt(Math.floor(Math.random() * jpChars.length));
+          }
+          element.textContent = element.textContent.slice(0, i) + randomCluster;
+          flashes++;
+          setTimeout(flashChar, 40);
+        } else {
+          element.textContent = element.textContent.slice(0, i) + text[i];
+          i++;
+          const delay = 3 + Math.random() * 5;
+          typingTimeout = setTimeout(typeChar, delay);
+        }
+      }
+
+      if (element.textContent.length < i + 5) {
+        element.textContent += " ".repeat(5);
+      }
+
+      flashChar();
+
     } else {
       isTyping = false;
       if (callback) callback();
     }
   }
+
   typeChar();
 }
 
