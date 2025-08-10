@@ -21,21 +21,21 @@
 
   "start1": {
     "lines": [
-      {"character": "system", "text": "Before we begin, what is your main skillset?"}
+      {"character": "system", "text": "Before we begin, you have been outfitted with multiple cybernetic enhancements: a quickhacking module, a neural implant, and arm muscle enhancements. Which do you choose as your primary device?"}
     ],
     "choices": [
       {
-        "text": "I can hack anything.",
+        "text": "Quickhacking module (Hacking)",
         "next": "start2",
         "skillChange": {"hacking": 2}
       },
       {
-        "text": "I have a silver tongue.",
+        "text": "Neural implant (Persuasion)",
         "next": "start2",
         "skillChange": {"persuasion": 2}
       },
       {
-        "text": "I don't need anything but my fists.",
+        "text": "Arm muscle enhancements (Combat)",
         "next": "start2",
         "skillChange": {"combat": 2}
       }
@@ -1407,16 +1407,308 @@
     ],
     "choices": [
       {
-        "text": "Go through door",
+        "text": "*Go through door*",
         "next": "room"
       },
       {
-        "text": "Go through door",
+        "text": "*Go through door*",
         "next": "room"
       },
       {
-        "text": "Go through door",
+        "text": "*Go through door*",
         "next": "room"
+      }
+    ]
+  },
+
+  "room": {
+    "lines": [
+      {"character": "system", "text": "You find yourself in a room with various high-tech devices. In the center is a giant glowing tube filled with blue liquid leading around the room to a central console."}
+    ],
+    "choices": [
+      {
+        "text": "What is this?",
+        "next": "room1"
+      },
+      {
+        "text": "What is this?",
+        "next": "room1"
+      },
+      {
+        "text": "What is this?",
+        "next": "room1"
+      }
+    ]
+  },
+
+  "room1": {
+    "lines": [
+      {"character": "raven", "text": "If I'm not mistaken, we are directly below the mansion itself. This looks to be the generator that maintains the artifact. It must be somewhere in this room. Check the central console."}
+    ],
+    "choices": [
+      {
+        "text": "*Look at central console*",
+        "next": "room2"
+      },
+      {
+        "text": "*Look at central console*",
+        "next": "room2"
+      },
+      {
+        "text": "*Look at central console*",
+        "next": "room2"
+      }
+    ]
+  },
+
+  "room2": {
+    "lines": [
+      {"character": "system", "text": "You look at the central console. The blue liquid appears to be funneling into a small chip connected to the console."}
+    ],
+    "choices": [
+      {
+        "text": "*Consult Raven*",
+        "next": "room3"
+      },
+      {
+        "text": "*Consult Raven*",
+        "next": "room3"
+      },
+      {
+        "text": "*Consult Raven*",
+        "next": "room3"
+      }
+    ]
+  },
+
+  "room3": {
+    "lines": [
+      {"character": "raven", "text": "That... That's the artifact! It matches the photos exactly. You should have no problem removing it, I believe its auxiliary power can keep it on for a few days, so just pull it out and we can leave."}
+    ],
+    "choices": [
+      {
+        "text": "*Override the computer and force eject the artifact*",
+        "next": "room4",
+        "skillReq": {"hacking": 1},
+        "skillChange": {"hacking": 1}
+      },
+      {
+        "text": "*Convince Raven to take it*",
+        "next": "room5",
+        "skillReq": {"persuasion": 1},
+        "skillChange": {"persuasion": 1}
+      },
+      {
+        "text": "*Yank it out*",
+        "next": "room6",
+        "skillReq": {"combat": 1},
+        "skillChange": {"combat": 1}
+      }
+    ]
+  },
+
+  "room4": {
+    "lines": [
+      {"character": "system", "text": "You hack into the console and the artifact ejects. You pick it up and put it in your pocket."}
+    ],
+    "choices": [
+      {
+        "text": "That was suspiciously easy...",
+        "next": "room7"
+      },
+      {
+        "text": "That was suspiciously easy...",
+        "next": "room7"
+      },
+      {
+        "text": "That was suspiciously easy...",
+        "next": "room7"
+      }
+    ]
+  },
+
+  "room5": {
+    "lines": [
+      {"character": "system", "text": "Raven yanks out the artifact. She hands it to you."}
+    ],
+    "choices": [
+      {
+        "text": "That was suspiciously easy...",
+        "next": "room7"
+      },
+      {
+        "text": "That was suspiciously easy...",
+        "next": "room7"
+      },
+      {
+        "text": "That was suspiciously easy...",
+        "next": "room7"
+      }
+    ]
+  },
+
+  "room6": {
+    "lines": [
+      {"character": "system", "text": "You yank out the artifact and pocket it."}
+    ],
+    "choices": [
+      {
+        "text": "That was suspiciously easy...",
+        "next": "room7"
+      },
+      {
+        "text": "That was suspiciously easy...",
+        "next": "room7"
+      },
+      {
+        "text": "That was suspiciously easy...",
+        "next": "room7"
+      }
+    ]
+  },
+
+  "room7": {
+    "lines": [
+      {"character": "raven", "text": "Regardless, we have it. So we need to exit immediately before anyone sees."}
+    ],
+    "choices": [
+      {
+        "text": "On it.",
+        "next": "room8"
+      },
+      {
+        "text": "Let's go.",
+        "next": "room8"
+      },
+      {
+        "text": "Lead the way.",
+        "next": "room8"
+      }
+    ]
+  },
+
+  "room8": {
+    "lines": [
+      {"character": "system", "text": "UNAUTHORIZED TAMPERING DETECTED! UNAUTHORIZED TAMPERING DETECTED! UNAUTHORIZED TAMPERING DETECTED!"}
+    ],
+    "choices": [
+      {
+        "text": "!",
+        "next": "room9"
+      },
+      {
+        "text": "!",
+        "next": "room9"
+      },
+      {
+        "text": "!",
+        "next": "room9"
+      }
+    ]
+  },
+
+  "room9": {
+    "lines": [
+      {"character": "system", "text": "Sirens start going off in the room and all exits shut down. You have no conventional way out."}
+    ],
+    "choices": [
+      {
+        "text": "!",
+        "next": "room10"
+      },
+      {
+        "text": "!",
+        "next": "room10"
+      },
+      {
+        "text": "!",
+        "next": "room10"
+      }
+    ]
+  },
+
+  "room10": {
+    "lines": [
+      {"character": "raven", "text": "Shit! We need to run, quick! The governor will be down any second, do whatever you can! I will try to find something..."}
+    ],
+    "choices": [
+      {
+        "text": "*Hack the system and shut it down*",
+        "next": "room11",
+        "skillReq": {"hacking": 2}
+      },
+      {
+        "text": "*Wait for the governor to show up and fake surrender*",
+        "next": "room12",
+        "skillReq": {"persuasion": 2}
+      },
+      {
+        "text": "*Grab a nearby pipe and pry your way back to where you came from*",
+        "next": "room13",
+        "skillReq": {"combat": 2}
+      }
+    ]
+  },
+
+  "room11": {
+    "lines": [
+      {"character": "system", "text": "This is your first decision point, what you choose here will affect the story. Do you wish to go forward with this option?"}
+    ],
+    "choices": [
+      {
+        "text": "Yes.",
+        "next": "story1.json",
+        "skillChange": {"hacking": 1}
+      },
+      {
+        "text": "No.",
+        "next": "room10"
+      },
+      {
+        "text": "Let me see the others again.",
+        "next": "room10"
+      }
+    ]
+  },
+
+  "room12": {
+    "lines": [
+      {"character": "system", "text": "This is your first decision point, what you choose here will affect the story. Do you wish to go forward with this option?"}
+    ],
+    "choices": [
+      {
+        "text": "Yes.",
+        "next": "story2.json",
+        "skillChange": {"persuasion": 1}
+      },
+      {
+        "text": "No.",
+        "next": "room10"
+      },
+      {
+        "text": "Let me see the others again.",
+        "next": "room10"
+      }
+    ]
+  },
+  
+  "room13": {
+    "lines": [
+      {"character": "system", "text": "This is your first decision point, what you choose here will affect the story. Do you wish to go forward with this option?"}
+    ],
+    "choices": [
+      {
+        "text": "Yes.",
+        "next": "story3.json",
+        "skillChange": {"combat": 1}
+      },
+      {
+        "text": "No.",
+        "next": "room10"
+      },
+      {
+        "text": "Let me see the others again.",
+        "next": "room10"
       }
     ]
   },
