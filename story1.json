@@ -1,0 +1,127 @@
+{
+  "start": {
+    "lines": [
+      {"character": "system", "text": "You somehow manage to quickhack the entire sytem the room operates on. All possible doors immediately shut open."}
+    ],
+    "choices": [
+      {
+        "text": "*Try to escape*",
+        "next": "start1"
+      },
+      {
+        "text": "*Try to escape*",
+        "next": "start1"
+      },
+      {
+        "text": "*Try to escape*",
+        "next": "start1"
+      }
+    ]
+  },
+
+  "start1": {
+    "lines": [
+      {"character": "system", "text": "Since you are in an underwater base, you do not have time to even attempt before the room starts rapidly filling with water."}
+    ],
+    "choices": [
+      {
+        "text": "*Try to find a way to swim out*",
+        "next": "start2"
+      },
+      {
+        "text": "*Try to find a way to swim out*",
+        "next": "start2"
+      },
+      {
+        "text": "*Try to find a way to swim out*",
+        "next": "start2"
+      }
+    ]
+  },
+
+  "start2": {
+    "lines": [
+      {"character": "raven", "text": "Shit! You have to get out now!"}
+    ],
+    "choices": [
+      {
+        "text": "*Reach for her*",
+        "next": "start3"
+      },
+      {
+        "text": "*Reach for her*",
+        "next": "start3"
+      },
+      {
+        "text": "*Reach for her*",
+        "next": "start3"
+      }
+    ]
+  },
+
+  "start3": {
+    "lines": [
+      {"character": "system", "text": "You reached out for her. As you almost grab her, the water overtakes the room and pulls you both out rappidly in opposite directions."}
+    ],
+    "choices": [
+      {
+        "text": "*Swim up*",
+        "next": "start4"
+      },
+      {
+        "text": "*Swim up*",
+        "next": "start4"
+      },
+      {
+        "text": "*Swim up*",
+        "next": "start4"
+      }
+    ]
+  },
+
+  "start4": {
+    "lines": [
+      {"character": "system", "text": "You try to swim up, but you can't reach it in time. You accept your fate before blacking out."}
+    ],
+    "choices": [
+      {
+        "text": "...",
+        "next": "mountains"
+      },
+      {
+        "text": "...",
+        "next": "mountains"
+      },
+      {
+        "text": "...",
+        "next": "mountains"
+      }
+    ]
+  },
+
+  "mountains": {
+    "lines": [
+      {"character": "system", "text": ""}
+    ],
+    "choices": [
+      {
+        "text": "...",
+        "next": "mountains"
+      },
+      {
+        "text": "...",
+        "next": "mountains"
+      },
+      {
+        "text": "...",
+        "next": "mountains"
+      }
+    ]
+  },
+
+  "end": {
+    "lines": [
+      {"character": "system", "text": "Placeholder."}
+    ]
+  }
+}

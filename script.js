@@ -127,7 +127,7 @@ async function typeText(element, text, callback) {
   isTyping = true;
   skipTyping = false;
 
-  const jpChars = "あいうえおかきくけこさしすせそたちつてとなにぬねのまみむめもやゆよらりるれろわをんアイウエオカキクケコサシスセソタチツテトナニヌネノマミムメモヤユヨラリルレロワヲン漢字集界電話話語速";
+  const jpChars = "牛乳製品奶油脂肪酪農ミルクアイスリームチズヨグトバタショケキプンラテカド";
   let i = 0;
 
   function typeChar() {
@@ -145,7 +145,7 @@ async function typeText(element, text, callback) {
       function flashChar() {
         if (flashes < maxFlashes) {
           let randomCluster = "";
-          for (let j = 0; j < 5; j++) {
+          for (let j = 0; j < 1; j++) {
             randomCluster += jpChars.charAt(Math.floor(Math.random() * jpChars.length));
           }
           element.textContent = element.textContent.slice(0, i) + randomCluster;
@@ -154,7 +154,7 @@ async function typeText(element, text, callback) {
         } else {
           element.textContent = element.textContent.slice(0, i) + text[i];
           i++;
-          const delay = 3 + Math.random() * 5;
+          const delay = 3 + Math.random() * 1;
           typingTimeout = setTimeout(typeChar, delay);
         }
       }
@@ -315,5 +315,44 @@ async function init() {
     document.getElementById('dialogue-text').textContent = "Failed to load game data.";
   }
 }
+
+const canvas = document.getElementById("particle-bg");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const particles = Array.from({ length: 60 }, () => ({
+  x: Math.random() * canvas.width,
+  y: Math.random() * canvas.height,
+  r: Math.random() * 2 + 1,
+  dx: (Math.random() - 0.5) * 0.5,
+  dy: (Math.random() - 0.5) * 0.5,
+  color: `hsl(${Math.random()*360}, 100%, 50%)`
+}));
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => {
+    p.x += p.dx;
+    p.y += p.dy;
+
+    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+    ctx.fillStyle = p.color;
+    ctx.shadowColor = p.color;
+    ctx.shadowBlur = 8;
+    ctx.fill();
+  });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
 
 init();
