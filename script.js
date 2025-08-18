@@ -351,8 +351,19 @@ function animateParticles() {
 animateParticles();
 
 window.addEventListener('resize', () => {
+  const oldWidth = canvas.width;
+  const oldHeight = canvas.height;
+
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
+
+  const scaleX = canvas.width / oldWidth;
+  const scaleY = canvas.height / oldHeight;
+
+  particles.forEach(p => {
+    p.x *= scaleX;
+    p.y *= scaleY;
+  });
 });
 
 init();
