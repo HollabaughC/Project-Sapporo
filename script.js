@@ -132,6 +132,7 @@ async function typeText(element, text, callback) {
 
   function typeChar() {
     if (skipTyping) {
+      clearTimeout(typingTimeout);
       element.textContent = currentFullText;
       isTyping = false;
       if (callback) callback();
@@ -143,21 +144,18 @@ async function typeText(element, text, callback) {
       const maxFlashes = 1;
 
       function flashChar() {
-        if (flashes < maxFlashes) {
-          let randomCluster = "";
-          for (let j = 0; j < 1; j++) {
-            randomCluster += jpChars.charAt(Math.floor(Math.random() * jpChars.length));
-          }
-          element.textContent = element.textContent.slice(0, i) + randomCluster;
-          flashes++;
-          setTimeout(flashChar, 40);
-        } else {
-          element.textContent = element.textContent.slice(0, i) + text[i];
-          i++;
-          const delay = 3 + Math.random() * 1;
-          typingTimeout = setTimeout(typeChar, delay);
-        }
+      if (flashes < maxFlashes) {
+        const randomCluster = jpChars.charAt(Math.floor(Math.random() * jpChars.length));
+        element.textContent = element.textContent.slice(0, i) + randomCluster;
+        flashes++;
+        setTimeout(flashChar, 20);
+      } else {
+        element.textContent = element.textContent.slice(0, i) + text[i];
+        i++;
+        const delay = 5 + Math.random() * 10;
+        typingTimeout = setTimeout(typeChar, delay);
       }
+    }
 
       if (element.textContent.length < i + 5) {
         element.textContent += " ".repeat(5);
